@@ -1,0 +1,23 @@
+{% extends "model-page.html" %}
+{% block content  %}
+    <H1>EMPREGOS</H1>
+
+    <a href="/empregos/novo_emprego">
+        <button>Novo</button>
+    </a>
+
+    <ul  class="container-fluid list-group">
+        {% for emprego in empregos%}
+            <li class="list-group-item">{{emprego.titulo}} - {{ emprego.get_data_criacao }}
+               <div align="right">
+                   <a href="novo_emprego/?id={{ emprego.id }}" >
+                    <i class="fas fa-edit" style="color:blue">Editar</i>
+                </a> -
+                <a href="novo_emprego/delete/{{ emprego.id }}/" >
+                   <i class="fas fa-trash" style="color:red">Excluir</i>
+                </a>
+               </div>
+            </li>
+        {%endfor%}
+    </ul>
+{% endblock %}
